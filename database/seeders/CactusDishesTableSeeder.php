@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class CactusDishesTableSeeder extends Seeder
 {
@@ -19,7 +20,7 @@ class CactusDishesTableSeeder extends Seeder
 
         $categories[] = [
           'title' => $cName,
-          'slug'  => str_slug($cName),
+          'slug'  => Str::slug($cName),
           'parent_id' => 0,
         ];
 
@@ -30,11 +31,11 @@ class CactusDishesTableSeeder extends Seeder
 
             $categories[] = [
               'title' => $cName,
-              'slug'  => str_slug($cName),
+              'slug'  => Str::slug($cName),
               'parent_id' => $parent_id,
             ];
         }
 
-        \DB::table('cactus_dishes_category')->insert($categories);
+        \DB::table('cactus_dishes_categories')->insert($categories);
     }
 }
